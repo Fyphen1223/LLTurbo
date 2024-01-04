@@ -27,10 +27,6 @@ Refer to [/src/connectors](https://github.com/Fyphen1223/LLTurbo/tree/master/src
 
 > `npm install https://github.com/Fyphen1223/LLTurbo`
 
-### Documentation
-
-https://LLTurbo.shipgirl.moe/
-
 ### Small code snippet examples
 
 > Initializing the library (Using Connector Discord.JS)
