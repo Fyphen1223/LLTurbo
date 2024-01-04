@@ -1,5 +1,5 @@
 {
-  "name": "shoukaku",
+  "name": "llturbo",
   "version": "4.0.1",
   "description": "A stable and updated wrapper around Lavalink",
   "main": "dist/index.js",
@@ -13,9 +13,8 @@
     }
   },
   "scripts": {
-    "build": "npm run build:ts && npm run build:docs",
+    "build": "npm run build:ts",
     "build:ts": "tsup --config tsup-config.json",
-    "build:docs": "typedoc --theme default --readme README.md --out docs/ --entryPointStrategy expand src/.",
     "lint": "eslint --fix --ext .ts",
     "prepare": "npm run build:ts"
   },
@@ -38,7 +37,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Fyphen1223/Shoukaku.git"
+    "url": "https://github.com/Fyphen1223/LLTurbo.git"
   },
   "dependencies": {
     "ws": "^8.16.0"
@@ -52,7 +51,6 @@
     "@typescript-eslint/parser": "^6.17.0",
     "eslint": "^8.56.0",
     "tsup": "^8.0.1",
-    "typedoc": "^0.25.6",
     "typescript": "^5.3.3"
   }
 }

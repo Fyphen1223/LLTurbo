@@ -12,16 +12,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-      with:
-        persist-credentials: false
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
 
-    - name: Install Node
-      uses: actions/setup-node@v3
-      with:
-        node-version: 18
-    - name: Install Deps
-      run: npm i
-    - name: Lint code
-      run: npm run lint
+      - name: Install Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install Deps
+        run: npm i
+      - name: Lint code
+        run: npm run lint
