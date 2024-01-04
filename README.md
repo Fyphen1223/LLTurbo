@@ -25,7 +25,7 @@ Refer to [/src/connectors](https://github.com/Fyphen1223/LLTurbo/tree/master/src
 
 ### Installation
 
-> `npm install LLTurbo`
+> `npm install https://github.com/Fyphen1223/LLTurbo`
 
 ### Documentation
 
