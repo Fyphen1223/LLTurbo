@@ -2,7 +2,7 @@
 
 > A stable and updated wrapper around Lavalink
 
-![Github Stars](https://img.shields.io/github/stars/Deivu/LLTurbo?style=flat-square)
+![Github Stars](https://img.shields.io/github/stars/Fyphen1223/LLTurbo?style=flat-square)
 ![GitHub issues](https://img.shields.io/github/issues-raw/Fyphen1223/LLTurbo?style=flat-square)
 
 ### Features
