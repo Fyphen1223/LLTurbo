@@ -594,4 +594,10 @@ export class Player extends EventEmitter {
                 );
         }
     }
+
+    public async startlisten(guildId: string, userId: string): Promise<any> {
+        const voiceEvent: any = new EventEmitter();
+        
+        return voiceEvent;
+    }
 }
