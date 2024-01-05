@@ -43,7 +43,6 @@
     "ws": "^8.16.0"
   },
   "devDependencies": {
-    "@augu/eslint-config": "^5.0.0",
     "@types/node": "^20.10.6",
     "@types/node-fetch": "^2.6.10",
     "@types/ws": "^8.5.10",

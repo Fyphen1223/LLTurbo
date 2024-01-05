@@ -3,6 +3,7 @@ import { Node } from '../node/Node';
 import { Connection } from './Connection';
 import { OpCodes, State, LLTurboDefaults } from '../Constants';
 import { Exception, Track, UpdatePlayerInfo, UpdatePlayerOptions } from '../node/Rest';
+import websocket from 'ws';
 
 export type TrackEndReason = 'finished' | 'loadFailed' | 'stopped' | 'replaced' | 'cleanup';
 export type PlayerEventType = 'TrackStartEvent' | 'TrackEndEvent' | 'TrackExceptionEvent' | 'TrackStuckEvent' | 'WebSocketClosedEvent';
@@ -232,6 +233,8 @@ export class Player extends EventEmitter {
      * @param node An instance of Node (Lavalink API wrapper)
      * @param connection An instance of connection class
      */
+
+    listeningWebSocket: any;
     constructor(guildId: string, node: Node) {
         super();
         this.guildId = guildId;
@@ -242,6 +245,7 @@ export class Player extends EventEmitter {
         this.position = 0;
         this.ping = 0;
         this.filters = {};
+        this.listeningWebSocket = null; 
     }
 
     public get data(): UpdatePlayerInfo {
@@ -595,9 +599,42 @@ export class Player extends EventEmitter {
         }
     }
 
-    public async startlisten(guildId: string, userId: string): Promise<any> {
-        const voiceEvent: any = new EventEmitter();
-        
-        return voiceEvent;
+    public async startListen(): Promise<EventEmitter> {
+        const listener: EventEmitter = new EventEmitter();
+        const headers: object = {
+            Authorization: this.node.auth,
+            'user-id': this.node.manager.id,
+            'guild-id': this.guildId,
+            'Client-Name': this.node.manager.options.userAgent
+        };
+        const listeningWebSocket: websocket = new websocket(`${this.node.url}/connection/data`,
+            { headers } as websocket.ClientOptions
+        );
+        this.listeningWebSocket = listeningWebSocket;
+        listeningWebSocket.on('open', function() {
+            listener.emit('open');
+        });
+        listeningWebSocket.on('message', function(data: any) {
+            const message: any = JSON.parse(data);
+            if (data.type === 'startSpeakingEvent') {
+                listener.emit('startSpeaking', data.data);
+            }
+            else if(data.type === 'endSpeakingEvent') {
+                listener.emit('endSpeaking', data.data);
+            }
+        });
+        listeningWebSocket.on('close', function() {
+            listener.emit('close');
+        });
+        listeningWebSocket.on('error', function() {
+            listener.emit('error');
+        });
+        return listener;
+    }
+    public async stopListen(): Promise<boolean> {
+        if(!this.listeningWebSocket) return false;
+        this.listeningWebSocket.close();
+        this.listeningWebSocket = null;
+        return true;
     }
 }

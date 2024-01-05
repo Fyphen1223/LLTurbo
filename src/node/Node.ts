@@ -97,11 +97,11 @@ export class Node extends EventEmitter {
     /**
      * URL of Lavalink
      */
-    private readonly url: string;
+    public readonly url: string;
     /**
      * Credentials to access Lavalink
      */
-    private readonly auth: string;
+    public readonly auth: string;
     /**
      * The number of reconnects to Lavalink
      */
