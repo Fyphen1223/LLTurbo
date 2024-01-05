@@ -118,8 +118,8 @@ const { LLTurbo, Connectors } = require("LLTurbo");
 const Nodes = [
   {
     name: "Localhost",
-    url: "localhost:6969",
-    auth: "marin_kitagawa",
+    url: "localhost:2333",
+    auth: "youshallnotpass",
   },
 ];
 const client = new Client();
