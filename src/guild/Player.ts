@@ -600,6 +600,7 @@ export class Player extends EventEmitter {
     }
 
     public async startListen(): Promise<EventEmitter> {
+        if(this.listeningWebSocket) return this.listeningWebSocket;
         const listener: EventEmitter = new EventEmitter();
         const headers: object = {
             Authorization: this.node.auth,
