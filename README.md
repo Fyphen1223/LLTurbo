@@ -1,9 +1,11 @@
 ## LLTurbo
 
-> A stable and updated wrapper around Lavalink
+> A stable and updated wrapper around Lavalink, based on Shoukaku client by @Deivu.
 
 ![Github Stars](https://img.shields.io/github/stars/Fyphen1223/LLTurbo?style=flat-square)
 ![GitHub issues](https://img.shields.io/github/issues-raw/Fyphen1223/LLTurbo?style=flat-square)
+
+
 
 ### Features
 
